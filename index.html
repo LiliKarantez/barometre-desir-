@@ -7,52 +7,64 @@
 <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{min-height:100vh;background:linear-gradient(160deg,#2d1b4e 0%,#4a1580 50%,#3d0d5c 100%);color:#FAFAFA;font-family:'Bai Jamjuree',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem 1.25rem;overflow-x:hidden;}
-canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.15;}
+body{min-height:100vh;background:linear-gradient(160deg,#fdf6f0 0%,#f9ede8 50%,#fdf0f5 100%);color:#2a1a1a;font-family:'Bai Jamjuree',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem 1.25rem;overflow-x:hidden;}
+canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.18;}
 .container{position:relative;z-index:1;max-width:540px;width:100%;text-align:center;}
-.eyebrow{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:#00BCD4;margin-bottom:1.25rem;}
-h1{font-size:clamp(1.9rem,5.5vw,2.7rem);font-weight:300;line-height:1.25;margin-bottom:0.75rem;color:#FAFAFA;font-style:italic;}
-.subtitle{font-size:0.85rem;color:rgba(250,250,250,0.7);line-height:1.8;margin-bottom:3rem;font-weight:300;}
-input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:5px;border-radius:3px;background:rgba(255,255,255,0.2);outline:none;cursor:pointer;margin-bottom:0.75rem;}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#FAFAFA;border:3px solid #9B59B6;cursor:grab;box-shadow:0 0 14px rgba(155,89,182,0.6);}
+.eyebrow{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:#9B59B6;margin-bottom:1.25rem;}
+h1{font-size:clamp(1.9rem,5.5vw,2.7rem);font-weight:300;line-height:1.25;margin-bottom:0.75rem;color:#2a1a1a;font-style:italic;}
+.subtitle{font-size:0.85rem;color:rgba(42,26,26,0.6);line-height:1.8;margin-bottom:3rem;font-weight:300;}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:5px;border-radius:3px;background:rgba(155,89,182,0.2);outline:none;cursor:pointer;margin-bottom:0.75rem;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:3px solid #9B59B6;cursor:grab;box-shadow:0 0 14px rgba(155,89,182,0.35);}
 input[type=range]::-webkit-slider-thumb:active{cursor:grabbing;}
-.baro-labels{display:flex;justify-content:space-between;font-size:0.68rem;color:rgba(250,250,250,0.5);margin-bottom:2.5rem;}
-.score-wrap{margin:0 auto 2rem;width:110px;height:110px;border-radius:50%;border:2px solid rgba(155,89,182,0.6);display:flex;align-items:center;justify-content:center;flex-direction:column;background:rgba(155,89,182,0.12);}
-.score-num{font-size:2.8rem;font-weight:300;line-height:1;color:#FAFAFA;}
-.score-lbl{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(250,250,250,0.4);margin-top:0.15rem;}
-.message-box{padding:1.75rem 1.5rem;border:1px solid rgba(155,89,182,0.25);border-radius:14px;background:rgba(155,89,182,0.08);margin-bottom:1.5rem;min-height:110px;transition:all 0.4s;}
-.msg-label{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#00BCD4;margin-bottom:0.75rem;}
-.msg-text{font-size:1.05rem;font-style:italic;font-weight:300;line-height:1.75;color:#FAFAFA;}
-.cta-section{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(155,89,182,0.2);opacity:0;pointer-events:none;transition:opacity 0.5s;}
+.baro-labels{display:flex;justify-content:space-between;font-size:0.68rem;color:rgba(42,26,26,0.4);margin-bottom:2.5rem;}
+.score-wrap{margin:0 auto 2rem;width:110px;height:110px;border-radius:50%;border:2px solid rgba(155,89,182,0.4);display:flex;align-items:center;justify-content:center;flex-direction:column;background:rgba(155,89,182,0.07);}
+.score-num{font-size:2.8rem;font-weight:300;line-height:1;color:#2a1a1a;}
+.score-lbl{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(42,26,26,0.35);margin-top:0.15rem;}
+.message-box{padding:1.75rem 1.5rem;border:1px solid rgba(155,89,182,0.2);border-radius:14px;background:rgba(255,255,255,0.6);margin-bottom:1.5rem;min-height:110px;transition:all 0.4s;}
+.msg-label{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#9B59B6;margin-bottom:0.75rem;}
+.msg-text{font-size:1.05rem;font-style:italic;font-weight:300;line-height:1.75;color:#2a1a1a;}
+.cta-section{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(155,89,182,0.15);opacity:0;pointer-events:none;transition:opacity 0.5s;}
 .cta-section.visible{opacity:1;pointer-events:auto;}
-.cta-intro{font-size:0.82rem;color:rgba(250,250,250,0.75);margin-bottom:1.25rem;line-height:1.65;font-style:italic;}
-.cta-btn{display:inline-block;padding:1.1rem 2.75rem;background:linear-gradient(135deg,#7b3fa0,#9B59B6);color:#FAFAFA;text-decoration:none;border-radius:50px;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(155,89,182,0.4);}
-.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(155,89,182,0.6);}
-.slogan{margin-top:1.25rem;font-size:0.7rem;color:rgba(250,250,250,0.35);font-style:italic;}
-
-footer{margin-top:3rem;padding:1.5rem 1rem;border-top:1px solid rgba(155,89,182,0.15);}
-.footer-inner{max-width:600px;margin:0 auto;text-align:center;}
-.footer-contact{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.4rem 0.75rem;margin-bottom:0.6rem;}
-.footer-sep{color:rgba(250,250,250,0.2);font-size:0.7rem;}
-.footer-adresse{font-size:0.68rem;color:rgba(250,250,250,0.35);}
-.footer-link{font-size:0.68rem;color:rgba(250,250,250,0.4);text-decoration:none;transition:color 0.2s;}
-.footer-link:hover{color:rgba(250,250,250,0.7);}
-.footer-social{display:inline-flex;align-items:center;gap:0.3rem;}
-.footer-social svg{opacity:0.6;}
-.footer-legal{font-size:0.6rem;color:rgba(250,250,250,0.2);letter-spacing:0.06em;margin-top:0.25rem;}
-
-
+.cta-intro{font-size:0.82rem;color:rgba(42,26,26,0.65);margin-bottom:1.25rem;line-height:1.65;font-style:italic;}
 .cta-events{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.25rem;}
 .cta-event-btn{display:block;padding:0.9rem 1.5rem;border-radius:50px;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;text-align:center;}
 .cta-event-btn:hover{transform:translateY(-2px);}
-.cta-btn-1{background:linear-gradient(135deg,#7b3fa0,#9B59B6);color:#FAFAFA;box-shadow:0 4px 18px rgba(155,89,182,0.35);}
-.cta-btn-1:hover{box-shadow:0 8px 28px rgba(155,89,182,0.55);}
-.cta-btn-2{background:rgba(155,89,182,0.12);border:1px solid rgba(155,89,182,0.4);color:#FAFAFA;}
-.cta-btn-2:hover{background:rgba(155,89,182,0.22);}
-.cta-btn-3{background:rgba(0,188,212,0.1);border:1px solid rgba(0,188,212,0.35);color:#FAFAFA;}
-.cta-btn-3:hover{background:rgba(0,188,212,0.2);}
-.cta-event-date{display:block;font-size:0.62rem;opacity:0.65;margin-bottom:0.15rem;letter-spacing:0.05em;text-transform:none;}
+.cta-btn-3{background:linear-gradient(135deg,#7b3fa0,#9B59B6);color:#fff;box-shadow:0 4px 18px rgba(155,89,182,0.3);}
+.cta-btn-3:hover{box-shadow:0 8px 28px rgba(155,89,182,0.5);}
+.cta-event-date{display:block;font-size:0.62rem;opacity:0.75;margin-bottom:0.15rem;letter-spacing:0.05em;text-transform:none;}
+.slogan{margin-top:1.25rem;font-size:0.7rem;color:rgba(42,26,26,0.3);font-style:italic;}
+footer{margin-top:3rem;padding:1.5rem 1rem;border-top:1px solid rgba(155,89,182,0.12);}
+.footer-inner{max-width:600px;margin:0 auto;text-align:center;}
+.footer-contact{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.4rem 0.75rem;margin-bottom:0.6rem;}
+.footer-sep{color:rgba(42,26,26,0.2);font-size:0.7rem;}
+.footer-adresse{font-size:0.68rem;color:rgba(42,26,26,0.35);}
+.footer-link{font-size:0.68rem;color:rgba(42,26,26,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-link:hover{color:rgba(42,26,26,0.75);}
+.footer-social{display:inline-flex;align-items:center;gap:0.3rem;}
+.footer-social svg{opacity:0.6;}
+.footer-legal{font-size:0.6rem;color:rgba(42,26,26,0.2);letter-spacing:0.06em;margin-top:0.25rem;}
 
+/* BULLE DE CONTACT */
+.contact-bubble{position:fixed;bottom:1.75rem;right:1.75rem;z-index:1000;}
+.bubble-btn{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#7b3fa0,#9B59B6);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(155,89,182,0.45);transition:transform 0.25s,box-shadow 0.25s;}
+.bubble-btn:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(155,89,182,0.6);}
+.bubble-btn svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.bubble-panel{position:absolute;bottom:70px;right:0;width:300px;background:#fff;border-radius:18px;box-shadow:0 8px 40px rgba(42,26,26,0.15);padding:1.5rem;opacity:0;transform:translateY(12px) scale(0.97);pointer-events:none;transition:opacity 0.28s,transform 0.28s;}
+.bubble-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+.bubble-panel h3{font-size:0.9rem;font-weight:500;color:#2a1a1a;margin-bottom:0.25rem;}
+.bubble-panel p{font-size:0.72rem;color:rgba(42,26,26,0.5);margin-bottom:1.1rem;line-height:1.5;}
+.bubble-panel input,
+.bubble-panel textarea{width:100%;border:1px solid rgba(155,89,182,0.25);border-radius:8px;padding:0.6rem 0.8rem;font-family:'Bai Jamjuree',sans-serif;font-size:0.8rem;color:#2a1a1a;background:#fdf6f0;outline:none;transition:border-color 0.2s;margin-bottom:0.6rem;}
+.bubble-panel input:focus,
+.bubble-panel textarea:focus{border-color:#9B59B6;}
+.bubble-panel textarea{resize:vertical;min-height:80px;}
+.bubble-row{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;}
+.bubble-send{width:100%;padding:0.7rem;background:linear-gradient(135deg,#7b3fa0,#9B59B6);color:#fff;border:none;border-radius:50px;font-family:'Bai Jamjuree',sans-serif;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:box-shadow 0.2s;margin-top:0.25rem;}
+.bubble-send:hover{box-shadow:0 4px 18px rgba(155,89,182,0.45);}
+.bubble-success{display:none;text-align:center;padding:1rem 0;}
+.bubble-success svg{width:38px;height:38px;stroke:#9B59B6;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:0.5rem;}
+.bubble-success p{font-size:0.85rem;color:#2a1a1a;font-style:italic;}
+.rgpd-note{font-size:0.6rem;color:rgba(42,26,26,0.35);margin-top:0.5rem;line-height:1.4;}
 </style>
 </head>
 <body>
@@ -75,18 +87,9 @@ footer{margin-top:3rem;padding:1.5rem 1rem;border-top:1px solid rgba(155,89,182,
     <div class="msg-text" id="msgtext">Déplacez le curseur pour découvrir votre portrait...</div>
   </div>
 
-  
   <div class="cta-section" id="ctaSection">
-    <p class="cta-intro">Nos prochains rendez-vous vous attendent.</p>
+    <p class="cta-intro">Un espace attend votre présence.</p>
     <div class="cta-events">
-      <a href="https://ypl.me/PWm" class="cta-event-btn cta-btn-1" target="_blank">
-        <span class="cta-event-date">26 mars 2026 · Vannes</span>
-        Dîner entre inconnus
-      </a>
-      <a href="https://ypl.me/PKY" class="cta-event-btn cta-btn-2" target="_blank">
-        <span class="cta-event-date">2 avril 2026 · Lorient</span>
-        Soirée rencontres
-      </a>
       <a href="https://ypl.me/PUR" class="cta-event-btn cta-btn-3" target="_blank">
         <span class="cta-event-date">6 juin 2026 · Vannes · Maison Flow</span>
         Salon de la Rencontre Célibataire
@@ -94,9 +97,36 @@ footer{margin-top:3rem;padding:1.5rem 1rem;border-top:1px solid rgba(155,89,182,
     </div>
     <div class="slogan">Osez. Rencontrez. Vivez.</div>
   </div>
+</div>
 
+<!-- BULLE DE CONTACT -->
+<div class="contact-bubble">
+  <div class="bubble-panel" id="bubblePanel">
+    <h3>Une question pour Lili ?</h3>
+    <p>Je vous réponds personnellement, toujours.</p>
+    <div id="bubbleForm">
+      <div class="bubble-row">
+        <input type="text" id="b-prenom" placeholder="Prénom" required>
+        <input type="text" id="b-nom" placeholder="Nom" required>
+      </div>
+      <div class="bubble-row">
+        <input type="text" id="b-ville" placeholder="Ville" required>
+        <input type="number" id="b-age" placeholder="Âge" min="18" max="99" required>
+      </div>
+      <textarea id="b-message" placeholder="Votre message..."></textarea>
+      <button class="bubble-send" id="bubbleSend">Envoyer</button>
+      <p class="rgpd-note">Vos données nous sont confiées. Elles ne seront jamais vendues, jamais partagées.</p>
+    </div>
+    <div class="bubble-success" id="bubbleSuccess">
+      <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+      <p>Merci ! Lili vous répondra très vite.</p>
+    </div>
+  </div>
+  <button class="bubble-btn" id="bubbleToggle" aria-label="Contacter Lili">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
 </div>
-</div>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-contact">
@@ -114,38 +144,90 @@ footer{margin-top:3rem;padding:1.5rem 1rem;border-top:1px solid rgba(155,89,182,
         Instagram
       </a>
     </div>
-    <div class="footer-legal">SIRET : 40149331700069 · Les Cœurs Solitaires · Salon de la Rencontre · 6 juin 2026 · Maison Flow, Vannes</div>
+    <div class="footer-legal">SIRET : 40149331700069 · Les Cœurs Solitaires · ©2026 Lili Karantez — Toute reproduction interdite, même partielle.</div>
   </div>
 </footer>
 
 <script>
-const messages = [
-  {min:0,max:15,text:"Vous êtes en paix avec votre solitude. C'est une force rare. Mais parfois, la paix ressemble à de la résignation et vous seul(e) savez la différence.",cta:false},
-  {min:16,max:30,text:"Vous n'êtes pas pressé(e). Mais quelque chose en vous surveille la porte. Ce n'est pas de l'urgence c'est de la vie qui cherche à se frayer un chemin.",cta:false},
-  {min:31,max:50,text:"Vous êtes à mi-chemin entre le confort du seul et l'envie de l'autre. C'est exactement là que les vraies décisions se prennent.",cta:true},
-  {min:51,max:70,text:"Vous êtes prêt(e). Pas parfaitement personne ne l'est. Mais l'envie est là, réelle, et elle mérite d'être entendue.",cta:true},
-  {min:71,max:85,text:"Votre désir est fort et sincère. Il ne demande qu'à rencontrer le bon contexte. Ce n'est pas le hasard qui crée cela c'est la décision d'y aller.",cta:true},
-  {min:86,max:100,text:"Vous êtes en feu. Cette intensité est précieuse ne la laissez pas brûler dans le vide. Elle mérite une scène, un espace, des gens à sa hauteur.",cta:true}
-];
-const slider=document.getElementById('slider');
-const scoreEl=document.getElementById('score');
-const msgtextEl=document.getElementById('msgtext');
-const ctaSection=document.getElementById('ctaSection');
-function update(){
-  const v=parseInt(slider.value);
-  scoreEl.textContent=v;
-  const m=messages.find(x=>v>=x.min&&v<=x.max);
-  if(m){msgtextEl.textContent=m.text;ctaSection.classList.toggle('visible',m.cta);}
+const messages = [{"min": 0, "max": 15, "text": "Vous êtes en paix avec votre solitude. C'est une force rare. Mais parfois, la paix ressemble à de la résignation et vous seul(e) savez la différence.", "cta": false}, {"min": 16, "max": 30, "text": "Vous n'êtes pas pressé(e). Mais quelque chose en vous surveille la porte. Ce n'est pas de l'urgence c'est de la vie qui cherche à se frayer un chemin.", "cta": false}, {"min": 31, "max": 50, "text": "Vous êtes à mi-chemin entre le confort du seul et l'envie de l'autre. C'est exactement là que les vraies décisions se prennent.", "cta": true}, {"min": 51, "max": 70, "text": "Vous êtes prêt(e). Pas parfaitement personne ne l'est. Mais l'envie est là, réelle, et elle mérite d'être entendue.", "cta": true}, {"min": 71, "max": 85, "text": "Votre désir est fort et sincère. Il ne demande qu'à rencontrer le bon contexte. Ce n'est pas le hasard qui crée cela c'est la décision d'y aller.", "cta": true}, {"min": 86, "max": 100, "text": "Vous êtes en feu. Cette intensité est précieuse ne la laissez pas brûler dans le vide. Elle mérite une scène, un espace, des gens à sa hauteur.", "cta": true}];
+const slider = document.getElementById('slider');
+const scoreEl = document.getElementById('score');
+const msgtextEl = document.getElementById('msgtext');
+const ctaSection = document.getElementById('ctaSection');
+
+function update() {
+  const v = parseInt(slider.value);
+  scoreEl.textContent = v;
+  const m = messages.find(x => v >= x.min && v <= x.max);
+  if (m) { msgtextEl.textContent = m.text; ctaSection.classList.toggle('visible', m.cta); }
 }
-slider.addEventListener('input',update);update();
-const canvas=document.getElementById('bg');const ctx=canvas.getContext('2d');
-let W,H,hearts=[];
-function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
-resize();window.addEventListener('resize',resize);
-for(let i=0;i<18;i++)hearts.push({x:Math.random()*1200,y:Math.random()*900,s:Math.random()*0.3+0.1,vy:-0.2-Math.random()*0.25,op:Math.random()*0.3+0.08});
-function heartPath(x,y,s){ctx.save();ctx.translate(x,y);ctx.scale(s,s);ctx.beginPath();ctx.moveTo(0,-10);ctx.bezierCurveTo(10,-20,20,-10,0,5);ctx.bezierCurveTo(-20,-10,-10,-20,0,-10);ctx.closePath();ctx.restore();}
-function draw(){ctx.clearRect(0,0,W,H);hearts.forEach(h=>{h.y+=h.vy;if(h.y<-30){h.y=H+10;h.x=Math.random()*W;}ctx.globalAlpha=h.op;ctx.fillStyle='#FAFAFA';heartPath(h.x,h.y,h.s);ctx.fill();});requestAnimationFrame(draw);}
+slider.addEventListener('input', update);
+update();
+
+// Canvas coeurs
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+let W, H, hearts = [];
+function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+for (let i = 0; i < 18; i++) hearts.push({x:Math.random()*1200,y:Math.random()*900,s:Math.random()*0.3+0.1,vy:-0.2-Math.random()*0.25,op:Math.random()*0.3+0.08});
+function heartPath(x,y,s) { ctx.save(); ctx.translate(x,y); ctx.scale(s,s); ctx.beginPath(); ctx.moveTo(0,-10); ctx.bezierCurveTo(10,-20,20,-10,0,5); ctx.bezierCurveTo(-20,-10,-10,-20,0,-10); ctx.closePath(); ctx.restore(); }
+function draw() { ctx.clearRect(0,0,W,H); hearts.forEach(h => { h.y+=h.vy; if(h.y<-30){h.y=H+10;h.x=Math.random()*W;} ctx.globalAlpha=h.op; ctx.fillStyle='#9B59B6'; heartPath(h.x,h.y,h.s); ctx.fill(); }); requestAnimationFrame(draw); }
 draw();
+
+// Bulle contact
+const bubbleToggle = document.getElementById('bubbleToggle');
+const bubblePanel = document.getElementById('bubblePanel');
+const bubbleSend = document.getElementById('bubbleSend');
+const bubbleForm = document.getElementById('bubbleForm');
+const bubbleSuccess = document.getElementById('bubbleSuccess');
+
+bubbleToggle.addEventListener('click', function() {
+  bubblePanel.classList.toggle('open');
+});
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.contact-bubble')) {
+    bubblePanel.classList.remove('open');
+  }
+});
+
+bubbleSend.addEventListener('click', async function() {
+  const prenom = document.getElementById('b-prenom').value.trim();
+  const nom = document.getElementById('b-nom').value.trim();
+  const ville = document.getElementById('b-ville').value.trim();
+  const age = document.getElementById('b-age').value.trim();
+  const message = document.getElementById('b-message').value.trim();
+  if (!prenom || !nom || !ville || !age || !message) {
+    alert('Merci de remplir tous les champs.');
+    return;
+  }
+  bubbleSend.textContent = 'Envoi...';
+  bubbleSend.disabled = true;
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        access_key: 'd42b8d9d-a52c-4888-a489-5dd59b1b0f5b',
+        subject: 'Question via Baromètre du Désir',
+        from_name: prenom + ' ' + nom,
+        message: 'Prénom : ' + prenom + '\nNom : ' + nom + '\nVille : ' + ville + '\nÂge : ' + age + '\n\nMessage :\n' + message
+      })
+    });
+    if (res.ok) {
+      bubbleForm.style.display = 'none';
+      bubbleSuccess.style.display = 'block';
+    } else {
+      throw new Error('Erreur réseau');
+    }
+  } catch(e) {
+    alert('Une erreur est survenue. Merci de réessayer.');
+    bubbleSend.textContent = 'Envoyer';
+    bubbleSend.disabled = false;
+  }
+});
 </script>
 </body>
 </html>
